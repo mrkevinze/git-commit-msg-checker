@@ -65,6 +65,29 @@ def test_extract_subject_and_body():
         i += 1
 
 
+def test_has_valid_subject():
+    valid_subjects = [
+        'Add subject',
+        'Create project',
+    ]
+
+    invalid_subjects = [
+        '',
+        'Adds subject',
+        'Add subject.',
+        'add subject',
+        'Added subject',
+        'Adding subject',
+        'Add quote: Measuring programming progress by lines of code is like measuring aircraft building progress by weight',
+    ]
+
+    for subject in valid_subjects:
+        assert cm.has_valid_subject(subject)
+
+    for subject in invalid_subjects:
+        assert not cm.has_valid_subject(subject)
+
+
 def test_has_valid_commit_msg():
     # TODO: Add test cases
 
@@ -83,4 +106,5 @@ def test_has_valid_commit_msg():
 
 test_remove_lines_starting_with_hashtag()
 test_extract_subject_and_body()
+test_has_valid_subject()
 test_has_valid_commit_msg()
