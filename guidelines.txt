@@ -1,0 +1,63 @@
+Guidelines for git commit messages
+
+Subject:
+ - Start with a capitalized verb, e.g. Add content policy
+    - You need not capitalize the first letter of every word, but you
+      can if it is appropriate for that word
+ - Use simple present tense for the verb e.g. Add, rather than Adds,
+   Adding or Added
+    - Phrase it as telling someone what applying that commit will do;
+      see the link for a discussion on present vs past tense
+      https://stackoverflow.com/questions/3580013/should-i-use-past-or-present-tense-in-git-commit-messages
+ - Aim for a short summary of changes (around 50 characters)
+ - Do not exceed 70 chars as the line will be cut off when seen on
+   github.com
+ - Do not end with a period
+ - Add one blank line after the subject if there is a body
+
+Body:
+ - Elaborate in the body only if needed
+ - Wrap long sentences at 72 chars, i.e. manually add line breaks,
+   so that they fit in a regular terminal window when we run git log
+   or when we view commit messages using gitk
+ - Use a blank line to separate paragraphs
+ - Sentences in a paragraph should end with a period, except for
+   those in bullet points
+ - A introductory line before a bulleted list, if any, should end
+   with a colon
+ - Start bullet points with space, hyphen and space, i.e. ' - '
+    - This is a secondary bullet
+    - If a bullet point exceeds one line, add spaces to the next line
+      so that the next line appears aligned with the words on the
+      previous line, such as this bullet point
+    - This is an example
+    of bad alignment
+
+Tips:
+ - Set the text editor to use for writing your commit messages easily
+   https://help.github.com/articles/associating-text-editors-with-git/
+ - Make small and frequent commits, so it is easy for others to check
+   and verify the changes
+ - If you have successfully committed but not pushed yet, you can edit
+   the commit message with git commit --amend
+ - Run gitk to view your commit message
+ - Avoid ambiguous messages like "Fix bug in previous commit",
+   perhaps write something like "Fix no element edge case in sorting
+   algorithm"
+    - Moreover, Git lets you cherry pick, merge or revert commits,
+      so writing "previous commit" may not make sense
+
+Sample:
+Write short summary line
+
+Add more details. For example, explain the rationale behind the changes
+and if there are side effects.
+
+This is another paragraph.
+
+Bullet points should look something like this:
+ - Point 1
+ - Point 2
+
+References:
+ - Adapted guidelines from http://chris.beams.io/posts/git-commit/

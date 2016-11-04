@@ -1,0 +1,86 @@
+#!/usr/bin/env python
+
+"""Contains tests for the commit-msg script.
+
+To run this:
+1. Give commit-msg and commit-msg-test executable permissions.
+2. Run ./commit-msg-test
+"""
+
+import imp
+cm = imp.load_source('commit-msg', 'commit-msg')
+
+
+def test_remove_lines_starting_with_hashtag():
+    sample_commit_file_contents = [
+        '#Ignore',
+        '#Ignore1\n#Ignore2',
+        '#Ignore1\n#Ignore2\n\n#Ignore3',
+        '\n# Ignore\n',
+        'Do not ignore\nDo not ignore',
+        'Do not ignore\nDo not ignore\n',
+        'Do not #ignore\n#Ignore\nDo not ignore\n',
+    ]
+
+    target = [
+        '',
+        '',
+        '\n',
+        '\n',
+        'Do not ignore\nDo not ignore',
+        'Do not ignore\nDo not ignore\n',
+        'Do not #ignore\nDo not ignore\n',
+    ]
+
+    i = 0
+    for sample in sample_commit_file_contents:
+        assert cm.remove_lines_starting_with_hashtag(sample) == target[i]
+        i += 1
+
+
+def test_extract_subject_and_body():
+    sample_commit_file_contents = [
+        'Add subject',
+        'Add subject\n\nBody Paragraph 1\n\nBody Paragraph 2',
+        'Add \nsubject\n\nBody Paragraph 1\n\nBody Paragraph 2\n\n\n',
+        'Add subject\n\nBody Paragraph 1\n\n#Ignore\n#Ignore me\n\n',
+        'Add subject\n\nBody Paragraph 1\n\n#Ignore',
+        'Add subject\n\nBody Paragraph 1\n\n\n#Ignore\nDo not #Ignore\n\n',
+    ]
+
+    target = [
+        ('Add subject', None),
+        ('Add subject', 'Body Paragraph 1\n\nBody Paragraph 2'),
+        ('Add \nsubject', 'Body Paragraph 1\n\nBody Paragraph 2'),
+        ('Add subject', 'Body Paragraph 1'),
+        ('Add subject', 'Body Paragraph 1'),
+        ('Add subject', 'Body Paragraph 1\n\n\nDo not #Ignore'),
+    ]
+
+    i = 0
+    for sample in sample_commit_file_contents:
+        subject, body = cm.extract_subject_and_body(sample)
+        assert subject == target[i][0]
+        assert body == target[i][1]
+        i += 1
+
+
+def test_has_valid_commit_msg():
+    # TODO: Add test cases
+
+    valid_commit_file_contents = [
+    ]
+
+    invalid_commit_file_contents = [
+    ]
+
+    for file_contents in valid_commit_file_contents:
+        assert cm.has_valid_commit_msg(file_contents)
+
+    for file_contents in invalid_commit_file_contents:
+        assert not cm.has_valid_commit_msg(file_contents)
+
+
+test_remove_lines_starting_with_hashtag()
+test_extract_subject_and_body()
+test_has_valid_commit_msg()
