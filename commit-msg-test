@@ -41,20 +41,20 @@ def test_remove_lines_starting_with_hashtag():
 def test_extract_subject_and_body():
     sample_commit_file_contents = [
         'Add subject',
-        'Add subject\n\nBody Paragraph 1\n\nBody Paragraph 2',
-        'Add \nsubject\n\nBody Paragraph 1\n\nBody Paragraph 2\n\n\n',
-        'Add subject\n\nBody Paragraph 1\n\n#Ignore\n#Ignore me\n\n',
-        'Add subject\n\nBody Paragraph 1\n\n#Ignore',
-        'Add subject\n\nBody Paragraph 1\n\n\n#Ignore\nDo not #Ignore\n\n',
+        'Add subject\n\nBody paragraph 1\n\nBody paragraph 2',
+        'Add \nsubject\n\nBody paragraph 1\n\nBody paragraph 2\n\n\n',
+        'Add subject\n\nBody paragraph 1\n\n#Ignore\n#Ignore me\n\n',
+        'Add subject\n\nBody paragraph 1\n\n#Ignore',
+        'Add subject\n\nBody paragraph 1\n\n\n#Ignore\nDo not #Ignore\n\n',
     ]
 
     target = [
         ('Add subject', None),
-        ('Add subject', 'Body Paragraph 1\n\nBody Paragraph 2'),
-        ('Add \nsubject', 'Body Paragraph 1\n\nBody Paragraph 2'),
-        ('Add subject', 'Body Paragraph 1'),
-        ('Add subject', 'Body Paragraph 1'),
-        ('Add subject', 'Body Paragraph 1\n\n\nDo not #Ignore'),
+        ('Add subject', 'Body paragraph 1\n\nBody paragraph 2'),
+        ('Add \nsubject', 'Body paragraph 1\n\nBody paragraph 2'),
+        ('Add subject', 'Body paragraph 1'),
+        ('Add subject', 'Body paragraph 1'),
+        ('Add subject', 'Body paragraph 1\n\n\nDo not #Ignore'),
     ]
 
     i = 0
@@ -78,6 +78,8 @@ def test_has_valid_subject():
         'add subject',
         'Added subject',
         'Adding subject',
+        'Add subject. There is another sentence',
+        'Add subject\nThere is another sentence',
         'Add quote: Measuring programming progress by lines of code is like measuring aircraft building progress by weight',
     ]
 

@@ -94,11 +94,21 @@ def has_valid_subject(subject):
         return False
 
     if len(subject) > 70:
-        print 'Do not exceed 70 chars for the subject'
+        print 'The subject should not exceed 70 chars'
         return False
 
     if subject[-1] == '.':
         print 'Do not end the subject with a period'
+        return False
+
+    if '. ' in subject:
+        print 'Do not write multiple sentences in the subject'
+        return False
+
+    if '\n' in subject:
+        print 'The subject should fit on a single line'
+        print 'If there is a body, there should be 1 blank line between ' \
+              'the subject and the body'
         return False
 
     return True

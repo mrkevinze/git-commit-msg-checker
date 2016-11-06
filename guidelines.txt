@@ -10,8 +10,9 @@ Subject:
       see the link for a discussion on present vs past tense
       https://stackoverflow.com/questions/3580013/should-i-use-past-or-present-tense-in-git-commit-messages
  - Aim for a short summary of changes (around 50 characters)
- - Do not exceed 70 chars as the line will be cut off when seen on
-   github.com
+ - Should fit in a single line not exceeding 70 chars, otherwise the
+   line will be cut off when seen on github.com
+ - Do not create multiple sentences
  - Do not end with a period
  - Add one blank line after the subject if there is a body
 
