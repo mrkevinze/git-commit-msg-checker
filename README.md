@@ -1,6 +1,8 @@
 # Git Commit Message Checker
 
-Checks that git commit messages are formatted according to certain guidelines documented in `guidelines.txt`.
+The script checks that git commit messages are formatted according to certain guidelines documented in `guidelines.txt`.
+
+The checker should catch common errors, but it cannot provide perfect validation.
 
 ## Installation
 

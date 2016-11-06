@@ -15,13 +15,11 @@ def main():
         print 'You should only see this when you are testing the script\n'
         return
 
-    print 'Checking your commit message'
-    print 'Note that this script does not check everything perfectly\n'
+    print 'Doing a quick check on your commit message'
 
     file_contents = parse_commit_msg_file(sys.argv[1])
     if not has_valid_commit_msg(file_contents):
-        print '\nYou commit will not be saved'
-        print 'Please redo your commit'
+        print 'Your commit is not saved'
         sys.exit(1)
 
     # TODO: remove this before production to allow valid commits to occur
@@ -107,7 +105,7 @@ def has_valid_subject(subject):
 
     if '\n' in subject:
         print 'The subject should fit on a single line'
-        print 'If there is a body, there should be 1 blank line between ' \
+        print 'If there is a body, put 1 blank line between ' \
               'the subject and the body'
         return False
 
