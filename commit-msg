@@ -22,9 +22,6 @@ def main():
         print 'Your commit is not saved'
         sys.exit(1)
 
-    # TODO: remove this before production to allow valid commits to occur
-    sys.exit(1)
-
 
 def parse_commit_msg_file(path):
     with open(path, 'r') as f:
