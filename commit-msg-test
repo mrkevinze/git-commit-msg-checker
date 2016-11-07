@@ -98,6 +98,16 @@ def test_has_short_lines():
     assert not cm.has_short_lines(long_lines)
 
 
+def test_has_consecutive_blank_lines():
+    valid_lines = ['Line 1', '', 'Line 2', '']
+    invalid_lines_1 = ['Line 1', '', '', 'Line 2']
+    invalid_lines_2 = ['', '', 'Line 1']
+
+    assert not cm.has_consecutive_blank_lines(valid_lines)
+    assert cm.has_consecutive_blank_lines(invalid_lines_1)
+    assert cm.has_consecutive_blank_lines(invalid_lines_2)
+
+
 def test_has_valid_commit_msg():
     # TODO: Add test cases
 
@@ -118,4 +128,5 @@ test_remove_lines_starting_with_hashtag()
 test_extract_subject_and_body()
 test_has_valid_subject()
 test_has_short_lines()
+test_has_consecutive_blank_lines()
 test_has_valid_commit_msg()

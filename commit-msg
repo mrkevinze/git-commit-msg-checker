@@ -132,6 +132,9 @@ def has_valid_body(body):
     lines = body.split('\n')
     if not has_short_lines(lines):
         return False
+    if has_consecutive_blank_lines(lines):
+        print 'There should not be consecutive blank lines'
+        return False
 
     return True
 
@@ -143,6 +146,18 @@ def has_short_lines(lines):
             print line
             return False
     return True
+
+
+def has_consecutive_blank_lines(lines):
+    blank_lines = 0
+    for line in lines:
+        if line == '':
+            blank_lines += 1
+            if blank_lines > 1:
+                return True
+        else:
+            blank_lines = 0
+    return False
 
 
 main()
