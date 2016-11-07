@@ -129,7 +129,20 @@ def has_valid_body(body):
     if not body:
         return True
 
-    # TODO: Implement this
+    lines = body.split('\n')
+    if not has_short_lines(lines):
+        return False
+
     return True
+
+
+def has_short_lines(lines):
+    for line in lines:
+        if len(line) > 72:
+            print 'The line below exceeds 72 chars'
+            print line
+            return False
+    return True
+
 
 main()
