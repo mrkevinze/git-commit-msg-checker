@@ -90,12 +90,12 @@ def test_has_valid_subject():
         assert not cm.has_valid_subject(subject)
 
 
-def test_has_short_lines():
+def test_has_long_lines():
     short_lines = ['Line 1', 'Measuring programming progress by lines of code is like measuring']
     long_lines = ['Line 1', 'Measuring programming progress by lines of code is like measuring aircraft']
 
-    assert cm.has_short_lines(short_lines)
-    assert not cm.has_short_lines(long_lines)
+    assert not cm.has_long_lines(short_lines)
+    assert cm.has_long_lines(long_lines)
 
 
 def test_has_consecutive_blank_lines():
@@ -127,6 +127,6 @@ def test_has_valid_commit_msg():
 test_remove_lines_starting_with_hashtag()
 test_extract_subject_and_body()
 test_has_valid_subject()
-test_has_short_lines()
+test_has_long_lines()
 test_has_consecutive_blank_lines()
 test_has_valid_commit_msg()

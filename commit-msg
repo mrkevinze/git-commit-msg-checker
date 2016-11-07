@@ -130,8 +130,10 @@ def has_valid_body(body):
         return True
 
     lines = body.split('\n')
-    if not has_short_lines(lines):
+
+    if has_long_lines(lines):
         return False
+
     if has_consecutive_blank_lines(lines):
         print 'There should not be consecutive blank lines'
         return False
@@ -139,13 +141,13 @@ def has_valid_body(body):
     return True
 
 
-def has_short_lines(lines):
+def has_long_lines(lines):
     for line in lines:
         if len(line) > 72:
             print 'The line below exceeds 72 chars'
             print line
-            return False
-    return True
+            return True
+    return False
 
 
 def has_consecutive_blank_lines(lines):
